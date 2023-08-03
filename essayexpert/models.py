@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 import datetime
 from accounts.models import Profile
-
+from django.utils.text import slugify
 
 class Discipline(models.Model):
     name = models.CharField(max_length=100)
@@ -26,24 +26,25 @@ class PaperType(models.Model):
 
 
 class PowerPoint(models.Model):
-    count = models.PositiveIntegerField(default=0)
-    price = models.DecimalField(decimal_places=2, max_digits=12, default=7.00)
+    count = models.PositiveIntegerField(default=0, unique=True)
+    price = models.DecimalField(decimal_places=2, max_digits=12, default=3.00, editable=False)
     
     def __str__(self):
         return str(self.count)
     
+    @property
     def get_amount(self):
         return f"{(self.count*self.price):2f}"
     
     def save(self, *args, **kwargs):
-        self.price = float(self.get_amount())
+        self.price = float(self.get_amount)
         return super(PowerPoint, self).save(*args, **kwargs)
     
     
 
 PAPER_TYPE_CHOICES = [(paper_type.name, paper_type.name) for paper_type in PaperType.objects.all()]
 DISCIPLINE_CHOICES = [(discipline.name, discipline.name) for discipline in Discipline.objects.all()]
-POWERPOINT_CHOICES = [(str(ppt.count), str(ppt.count)) for ppt in PowerPoint.objects.all()]
+POWERPOINT_CHOICES = [(ppt.count, ppt.count) for ppt in PowerPoint.objects.all() or None]
 
 # # # Create your models here.
 class Order(models.Model):

@@ -23,7 +23,7 @@ class DisciplineSerializer(serializers.ModelSerializer):
 class PaperTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaperType
-        fields = "__all__"
+        fields = ['id', 'price']
 
 class PowerPointSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,7 +32,6 @@ class PowerPointSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    type_of_paper = PaperTypeSerializer(many=True, read_only=True)
     class Meta:
         model = Order
         fields = [

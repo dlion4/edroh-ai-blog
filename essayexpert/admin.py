@@ -27,8 +27,7 @@ class PaperTypeAdmin(admin.ModelAdmin):
 
 @admin.register(PowerPoint)
 class PowerPointAdmin(admin.ModelAdmin):
-    pass
-
+    list_display = ['count', 'get_amount', 'price']
 
 
 @admin.register(Order)
