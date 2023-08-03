@@ -34,7 +34,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = [
-            "client","topic","type_of_paper","discipline","pages","words",
+            "id","client","topic","type_of_paper","discipline","pages","words",
             "academic_level","deadline","paper_instruction","files","paper_format",
             "type_of_service","reference_copies","sms_update","turnitin_report",
             "writer_choice","ppt","software_tools","software_tool_description",

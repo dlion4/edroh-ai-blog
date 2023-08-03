@@ -32,7 +32,7 @@ class PowerPointAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["topic","type_of_paper","discipline","pages","words","academic_level","deadline","paper_format","type_of_service","reference_copies","sms_update","turnitin_report","writer_choice","ppt","software_tools",]
+    list_display = ["client", "topic","type_of_paper","discipline","pages","words","academic_level","deadline","paper_format","type_of_service","reference_copies","sms_update","turnitin_report","writer_choice","ppt","software_tools",]
     search_fields = ['topic', 'type_of_paper', 'discipline', "client"]
     list_filter = [
         "client",

@@ -40,7 +40,7 @@ class PowerPoint(models.Model):
         self.price = float(self.get_amount)
         return super(PowerPoint, self).save(*args, **kwargs)
     
-    
+
 
 PAPER_TYPE_CHOICES = [(paper_type.name, paper_type.name) for paper_type in PaperType.objects.all()]
 DISCIPLINE_CHOICES = [(discipline.name, discipline.name) for discipline in Discipline.objects.all()]
@@ -90,6 +90,10 @@ class Order(models.Model):
     software_tools = models.BooleanField(default=False)
     software_tool_description = models.TextField(blank=True, null=True)
     weekly = models.BooleanField(default=False)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        get_latest_by = "createdAt"
     
     def __str__(self):
         return str(self.topic)
@@ -98,7 +102,4 @@ class Order(models.Model):
         self.deadline += datetime.timedelta(hours=3)
         return super(Order, self).save(*args, **kwargs)
 
-
-
-  
 
