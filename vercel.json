@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "edroh_blog/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "edroh_blog/wsgi.py"
+    }
+  ]
+}
