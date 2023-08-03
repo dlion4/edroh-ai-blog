@@ -7,7 +7,6 @@ from essayexpert.models import (
     Order,
 )
 
-
 class SubDisciplineSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubDiscipline
@@ -15,15 +14,15 @@ class SubDisciplineSerializer(serializers.ModelSerializer):
 
 
 class DisciplineSerializer(serializers.ModelSerializer):
+    sub_discipline = SubDisciplineSerializer(many=True, read_only=True)
     class Meta:
         model = Discipline
-        fields = "__all__"
-
+        fields = ["id", "name", "sub_discipline"]
 
 class PaperTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaperType
-        fields = ['id', 'price']
+        fields = ['id', 'name', 'price']
 
 class PowerPointSerializer(serializers.ModelSerializer):
     class Meta:
