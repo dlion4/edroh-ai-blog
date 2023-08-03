@@ -2,8 +2,13 @@ from edroh_blog.settings.base import *
 
 
 
-LOCAL_APPS=["posts", "apis", "accounts"]
-FRAMEWORKS=[ 'rest_framework',]
+LOCAL_APPS=[
+    "posts",
+    "apis",
+    "accounts",
+    "essayexpert"
+    ]
+FRAMEWORKS=['rest_framework',]
 
 INSTALLED_APPS +=LOCAL_APPS
 INSTALLED_APPS +=FRAMEWORKS
