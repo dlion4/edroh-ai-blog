@@ -8,7 +8,10 @@ LOCAL_APPS=[
     "accounts",
     "essayexpert"
     ]
-FRAMEWORKS=['rest_framework',]
+FRAMEWORKS=[
+    'rest_framework',
+    'drf_yasg'
+    ]
 
 INSTALLED_APPS +=LOCAL_APPS
 INSTALLED_APPS +=FRAMEWORKS
